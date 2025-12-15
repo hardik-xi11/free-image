@@ -14,7 +14,7 @@ export default function Home() {
           <span className="arc-gradient-text drop-shadow-2xl">Converter</span>
         </h1>
         <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto font-light tracking-wide">
-          High Performance Processing. <span className="text-yellow-400 font-medium">Secure & Fast.</span>
+          Free. Open Source. <span className="text-yellow-400 font-medium">Secure & Fast.</span>
         </p>
       </div>
 

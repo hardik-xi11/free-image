@@ -170,9 +170,9 @@ export default function Converter() {
 
                 <input {...getInputProps()} />
                 <div className="flex flex-col items-center gap-6 relative z-10">
-                    <div className="p-5 bg-white/5 rounded-full text-white group-hover:scale-110 group-hover:text-yellow-400 transition-all duration-300 ring-1 ring-white/10 group-hover:ring-yellow-500/50">
+                    {/* <div className="p-5 bg-white/5 rounded-full text-white group-hover:scale-110 group-hover:text-yellow-400 transition-all duration-300 ring-1 ring-white/10 group-hover:ring-yellow-500/50">
                         <Upload size={40} className="drop-shadow-glow" />
-                    </div>
+                    </div> */}
                     <div className="space-y-3">
                         <h3 className="text-2xl font-black uppercase text-white tracking-widest leading-none">
                             Upload Images
@@ -188,7 +188,7 @@ export default function Converter() {
                             <LinkIcon size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
                             <input
                                 type="text"
-                                placeholder="HTTPS://EXAMPLE.COM/IMAGE.PNG"
+                                placeholder="HTTPS://SOMETHING.COM/IMAGE.PNG"
                                 value={urlInput}
                                 onChange={e => setUrlInput(e.target.value)}
                                 onKeyDown={e => e.key === 'Enter' && handleUrlImport(e)}
@@ -198,7 +198,7 @@ export default function Converter() {
                         <button
                             onClick={handleUrlImport}
                             disabled={!urlInput || isImportingUrl}
-                            className="px-6 bg-white/10 hover:bg-white/20 border-y border-r border-white/10 text-white disabled:opacity-50 transition-colors"
+                            className="px-6 hover:text-orange-400 text-white disabled:opacity-50 transition-colors"
                         >
                             {isImportingUrl ? <Loader2 size={18} className="animate-spin" /> : <Upload size={18} />}
                         </button>
@@ -229,14 +229,14 @@ export default function Converter() {
                             <div className="flex gap-3">
                                 <button
                                     onClick={convertAll}
-                                    className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all text-sm clip-path-slant"
+                                    className="px-6 py-2 bg-cyan-700 text-white font-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all text-sm clip-path-slant"
                                 >
                                     Convert All
                                 </button>
                                 {files.some(f => f.status === 'done') && (
                                     <button
                                         onClick={downloadAll}
-                                        className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white font-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all text-sm clip-path-slant"
+                                        className="px-6 py-2 bg-yellow-500 text-black font-bold uppercase tracking-wider hover:brightness-120 active:scale-95 transition-all text-sm clip-path-slant"
                                     >
                                         Download All
                                     </button>
