@@ -1,0 +1,23 @@
+
+> free-image@0.1.0 build
+> next build
+
+   ▲ Next.js 16.0.10 (Turbopack)
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 6.1s
+   Running TypeScript ...
+Failed to compile.
+
+./app/api/convert/route.ts:37:33
+Type error: Argument of type 'Buffer<ArrayBufferLike>' is not assignable to parameter of type 'BodyInit | null | undefined'.
+  Type 'Buffer<ArrayBufferLike>' is missing the following properties from type 'URLSearchParams': size, append, delete, get, and 2 more.
+
+  35 |         }
+  36 |
+> 37 |         return new NextResponse(outputBuffer, {
+     |                                 ^
+  38 |             headers: {
+  39 |                 'Content-Type': `image/${format === 'jpg' ? 'jpeg' : format}`,
+  40 |                 'Content-Disposition': `attachment; filename="converted.${format}"`,
+Next.js build worker exited with code: 1 and signal: null

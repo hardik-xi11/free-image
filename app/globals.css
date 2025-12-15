@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Using explicit HEX to ensure Tailwind 4 generating colors correctly without 'hsl()' wrapper complexity */
+  --color-background: #0d0d0d;
+  --color-foreground: #f8fafc;
+
+  --color-card: #151515;
+  --color-card-foreground: #f8fafc;
+
+  --color-popover: #151515;
+  --color-popover-foreground: #f8fafc;
+
+  --color-primary: #ffcc00;
+  /* Arc Yellow */
+  --color-primary-foreground: #000000;
+
+  --color-secondary: #262626;
+  --color-secondary-foreground: #f8fafc;
+
+  --color-muted: #262626;
+  --color-muted-foreground: #a3a3a3;
+
+  --color-accent: #262626;
+  --color-accent-foreground: #f8fafc;
+
+  --color-destructive: #9f1239;
+  --color-destructive-foreground: #f8fafc;
+
+  --color-border: #333333;
+  --color-input: #333333;
+  --color-ring: #ffcc00;
+
+  /* Arc Raiders Palette */
+  --color-arc-red: #ff2a2a;
+  --color-arc-orange: #ff7b00;
+  --color-arc-yellow: #ffcc00;
+  --color-arc-green: #33cc33;
+  --color-arc-blue: #00ccff;
+  --color-arc-violet: #cc33ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .glass-dark {
+    @apply bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .arc-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-arc-red)] via-[var(--color-arc-yellow)] to-[var(--color-arc-blue)];
+  }
+
+  .clip-path-slant {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+/* Background Animation - Grain */
+@keyframes grain {
+
+  0%,
+  100% {
+    transform: translate(0, 0)
+  }
+
+  10% {
+    transform: translate(-5%, -10%)
+  }
+
+  20% {
+    transform: translate(-15%, 5%)
+  }
+
+  30% {
+    transform: translate(7%, -25%)
+  }
+
+  40% {
+    transform: translate(-5%, 25%)
+  }
+
+  50% {
+    transform: translate(-15%, 10%)
+  }
+
+  60% {
+    transform: translate(15%, 0%)
+  }
+
+  70% {
+    transform: translate(0%, 15%)
+  }
+
+  80% {
+    transform: translate(3%, 35%)
+  }
+
+  90% {
+    transform: translate(-10%, 10%)
+  }
+}
+
+.bg-grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  font-family: inherit;
+  background-repeat: repeat;
+  animation: grain 8s steps(10) infinite;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
 }
