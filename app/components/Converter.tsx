@@ -178,7 +178,7 @@ export default function Converter() {
                             Upload Images
                         </h3>
                         <p className="text-slate-400 font-mono text-sm uppercase tracking-wider">
-                            Drag & Drop or Ctrl+V to paste
+                            Drag & Drop or <span className="text-yellow-500">Ctrl+V to paste</span>
                         </p>
                     </div>
 
@@ -238,7 +238,7 @@ export default function Converter() {
                                         onClick={downloadAll}
                                         className="px-6 py-2 bg-yellow-500 text-black font-bold uppercase tracking-wider hover:brightness-120 active:scale-95 transition-all text-sm clip-path-slant"
                                     >
-                                        Download All
+                                        Download Zip
                                     </button>
                                 )}
                             </div>

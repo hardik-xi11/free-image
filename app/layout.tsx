@@ -6,8 +6,8 @@ import { cn } from '@/lib/utils';
 const font = Outfit({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SwiftConvert - High Performance',
-  description: 'Convert images instantly with professional speed.',
+  title: 'Free-Image-Converter',
+  description: 'Convert jpg to png or webp to png for free.',
 };
 
 export default function RootLayout({
