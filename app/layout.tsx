@@ -17,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <meta name="google-adsense-account" content="ca-pub-8937532527520656"></meta>
       <body className={cn(font.className, "min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-yellow-500 selection:text-black")}>
         {/* Retro Rainbow Branding Band - Fixed Left */}
         <div className="fixed top-0 left-0 bottom-0 w-2 flex z-50 pointer-events-none">
