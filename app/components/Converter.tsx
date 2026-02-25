@@ -27,6 +27,7 @@ export default function Converter() {
     const [files, setFiles] = useState<ConvertedFile[]>([]);
     const [urlInput, setUrlInput] = useState('');
     const [isImportingUrl, setIsImportingUrl] = useState(false);
+    const [globalFormat, setGlobalFormat] = useState('png');
 
     // --- Helpers ---
     const generateId = () => Math.random().toString(36).substring(7);
@@ -226,13 +227,34 @@ export default function Converter() {
                                 <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
                                 Files Queue ({files.length})
                             </h2>
-                            <div className="flex gap-3">
-                                <button
-                                    onClick={convertAll}
-                                    className="px-6 py-2 bg-cyan-700 text-white font-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all text-sm clip-path-slant"
-                                >
-                                    Convert All
-                                </button>
+                            <div className="flex items-center gap-3">
+                                <div className="flex items-center bg-cyan-700 text-white clip-path-slant transition-all hover:brightness-110">
+                                    <button
+                                        onClick={convertAll}
+                                        className="pl-6 pr-2 py-2 font-bold uppercase tracking-wider active:scale-95 transition-all text-sm whitespace-nowrap"
+                                    >
+                                        Convert All To
+                                    </button>
+                                    <div className="pr-4 py-1">
+                                        <select
+                                            value={globalFormat}
+                                            onChange={(e) => {
+                                                const fmt = e.target.value;
+                                                setGlobalFormat(fmt);
+                                                setFiles(prev => prev.map(f =>
+                                                    f.status === 'pending' || f.status === 'error'
+                                                        ? { ...f, targetFormat: fmt }
+                                                        : f
+                                                ));
+                                            }}
+                                            className="bg-cyan-800/50 text-white border border-yellow-500/50 text-xs font-mono uppercase px-2 py-1 focus:border-yellow-500 focus:outline-none transition-all cursor-pointer hover:bg-cyan-800"
+                                        >
+                                            {FORMATS.map(fmt => (
+                                                <option key={fmt} value={fmt}>{fmt.toUpperCase()}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
                                 {files.some(f => f.status === 'done') && (
                                     <button
                                         onClick={downloadAll}

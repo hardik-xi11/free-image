@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Outfit } from 'next/font/google'; // Using Outfit for a more geometric/futuristic look similar to Arc Raiders
+import { Outfit } from 'next/font/google'; // Using Outfit for a more geometric/futuristic look similar to Arc Raiders
 import './globals.css';
 import { cn } from '@/lib/utils';
 
